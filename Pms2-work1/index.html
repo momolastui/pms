@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>库存管理系统</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    input, select, button {
+      margin: 5px 0;
+      padding: 8px;
+      width: 100%;
+    }
+    .form {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #message-box {
+      margin-top: 10px;
+      color: red;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      padding: 5px;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>库存管理系统</h1>
+
+    <!-- 搜索栏 -->
+    <input
+      type="text"
+      id="search-bar"
+      placeholder="搜索商品..."
+      oninput="searchProduct(document.getElementById('search-bar').value)"
+    />
+
+    <!-- 商品列表 -->
+    <ul id="product-list"></ul>
+
+    <!-- 特色商品按钮 -->
+    <button onclick="displayFeaturedProducts()">显示特色商品</button>
+
+    <!-- 添加商品 -->
+    <div class="form">
+      <h2>添加商品</h2>
+      <input type="text" id="product-id" placeholder="商品编号" />
+      <input type="text" id="product-name" placeholder="商品名称" />
+      <input type="text" id="product-category" placeholder="商品类别" />
+      <input type="number" id="product-quantity" placeholder="数量" />
+      <input type="number" id="product-price" placeholder="价格" />
+      <input type="text" id="product-supplier" placeholder="供应商" />
+      <select id="product-stockStatus">
+        <option value="inStock">有货</option>
+        <option value="lowStock">低库存</option>
+        <option value="outOfStock">无货</option>
+      </select>
+      <label>
+        <input type="checkbox" id="product-featured" />
+        是否为特色商品
+      </label>
+      <button onclick="handleAddProduct()">添加商品</button>
+    </div>
+
+    <!-- 删除商品 -->
+    <div class="form">
+      <h2>删除商品</h2>
+      <input type="text" id="delete-name" placeholder="输入要删除的商品名称" />
+      <button onclick="handleDeleteProduct()">删除商品</button>
+    </div>
+
+    <!-- 消息提示框 -->
+    <div id="message-box" style="display: none;"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
